@@ -1,0 +1,7 @@
+/* pages/mustache/mustache.wxss */
+.box{
+  font-size: 60rpx;
+}
+.active{
+  background-color: pink;
+}

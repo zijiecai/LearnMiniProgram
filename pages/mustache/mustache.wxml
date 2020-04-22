@@ -1,0 +1,61 @@
+<!--pages/mustache/mustache.wxml-->
+<!-- mustache语法 -->
+<view>{{message}}</view>
+<view>{{lastname}} {{firstname}}</view>
+<view>{{lastname + ' ' + firstname}}</view>
+<view>{{age >= 18 ? '成年人' : '未成年人'}}</view>
+
+<view>{{nowTime}}</view>
+
+<button size="mini" bindtap="handleSwitchColor">切换颜色</button>
+<view class="box {{isActive ? 'active' : ''}}">哈哈哈</view>
+
+<!-- <map longitude="116" latitude="24"></map> -->
+
+<!-- wx:if elif else -->
+<button size="mini" bindtap="handleIncrement">分数递增6</button>
+<view wx:if="{{score >= 90}}">优秀</view>
+<view wx:elif="{{score >= 80}}">良好</view>
+<view wx:elif="{{score >= 60}}">及格</view>
+<view wx:else>不及格</view>
+
+<view>-----------------------</view>
+<!-- wx:if和hidden在隐藏组件时有什么区别 -->
+<!-- 
+  区别：
+    hidden：将一个组件隐藏起来时，该组件依然是存在（display：none）
+    wx:if:将一个组件隐藏起来时，该组件根本不存在（压根没有创建）
+  选择：
+    如果显示和隐藏切换的频率非常高，选择使用hidden
+ -->
+ <view hidden="{{false}}">哈哈哈</view>
+ <view wx:if="{{true}}">哈哈哈</view>
+
+<!-- block标签 -->
+<block>
+<button>按钮</button>
+<view>哈哈</view>
+<text>嘿嘿</text>
+</block>
+
+<!-- item、index起名字 -->
+<view wx:for="{{movies}}" wx:for-item="movie" wx:for-index="i" wx:key="index">{{movie}} {{i}}</view>
+
+<block wx:for="{{nums}}" wx:for-item="inner_nums" wx:key="index">
+  <block wx:for="{{inner_nums}}" wx:key="index">
+    <view>{{item}}</view>
+  </block>
+</block>
+
+<!-- key的作用 -->
+<view>
+  <view wx:for="{{letters}}" wx:key="index">{{item}}</view>
+</view>
+
+<!-- ----------template---------- -->
+<import src="/wxml/template.wxml"/>
+
+<template is="contentItem" data="{{btnText:'按钮',content:'哈哈哈'}}" />
+<template is="contentItem" data="{{btnText:'警告',content:'呵呵呵'}}" />
+<template is="contentItem" data="{{btnText:'点击',content:'嘿嘿嘿'}}" />
+<template is="contentItem" data="{{btnText:'登录',content:'嘻嘻嘻'}}" />
